@@ -8,7 +8,7 @@ __pycache__/
 *.html
 /psycopg_binary/
 .vscode
-.venv
+.*venv
 .coverage
 htmlcov
 .idea
@@ -23,3 +23,6 @@ wheelhouse/
 /psycopg_c/build/
 /psycopg_pool/build/
 /tools/build/pg_config_vcpkg_stub/build/
+
+# Ignore object files from builds
+*.o

@@ -21,14 +21,19 @@ if os.path.abspath(os.getcwd()) != here:
 
 
 def get_config(what: str) -> str:
-    pg_config = "pg_config"
-    try:
-        out = sp.run([pg_config, f"--{what}"], stdout=sp.PIPE, check=True)
-    except Exception as e:
-        log.error(f"couldn't run {pg_config!r} --{what}: %s", e)
-        raise
-    else:
-        return out.stdout.strip().decode()
+    match what:
+        case "includedir":
+            res = os.environ.get("PG_INCLUDE_DIR")
+            if res is None:
+                raise ValueError("PG_INCLUDE_DIR is not set")
+            return res
+        case "libdir":
+            res = os.environ.get("PG_LIB_DIR")
+            if res is None:
+                raise ValueError("PG_LIB_DIR is not set")
+            return res
+        case _:
+            raise ValueError(f"Unknown config option: {what!r}")
 
 
 class psycopg_build_ext(build_ext):
