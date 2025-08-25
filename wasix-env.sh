@@ -10,4 +10,4 @@ pip install crossenv
 
 python -m crossenv ../cpython-install/cpython/bin/python3.wasm ./.cross-venv --cc wasixcc
 source .cross-venv/bin/activate
-pip install cython build
+build-pip install "cython<3.1.0,>=3.0.0" build setuptools wheel
