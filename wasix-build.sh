@@ -22,7 +22,6 @@ export PG_INCLUDE_DIR=$DEPS_DIR/pgsql/include
 export PG_LIB_DIR=$DEPS_DIR/pgsql/lib
 python3 -m build psycopg_c --wheel --outdir dist --no-isolation
 python3 -m build psycopg_binary --wheel --outdir dist --no-isolation
-python3 -m build psycopg_pool --wheel --outdir dist --no-isolation
 python3 -m build psycopg --wheel --outdir dist --no-isolation
 
 # Embed libpq into the binary packages, so it can be loaded automatically
